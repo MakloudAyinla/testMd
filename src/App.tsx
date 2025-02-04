@@ -1,24 +1,12 @@
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
-import { useEffect, useState } from "react";
+import Changelog from "./components/Changelog";
 
-const App = () => {
-  const [markdown, setMarkdown] = useState("");
-
-  useEffect(() => {
-    fetch("/CHANGELOG.md") // Assurez-vous que le fichier est accessible depuis le public/
-      .then((response) => response.text())
-      .then((text) => setMarkdown(text))
-      .catch((error) =>
-        console.error("Erreur lors du chargement du Markdown :", error)
-      );
-  }, []);
+function App() {
   return (
-    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-      {markdown}
-    </ReactMarkdown>
+    <div>
+      <h1>📜 Changelog</h1>
+      <Changelog />
+    </div>
   );
-};
+}
 
 export default App;
